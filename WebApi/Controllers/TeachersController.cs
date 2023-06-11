@@ -1,16 +1,14 @@
-using Repositories;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
+using ServiceContracts.Services;
 
 namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TeachersController : ControllerBase
+public class TeachersController : CrudController<Teacher>
 {
-    private readonly SchoolManagementDbContext _db;
-
-    public TeachersController(SchoolManagementDbContext db)
+    public TeachersController(ITeacherService teacherService) : base(teacherService)
     {
-        _db = db;
     }
 }

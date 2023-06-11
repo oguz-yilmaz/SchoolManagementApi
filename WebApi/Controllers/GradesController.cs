@@ -1,16 +1,14 @@
-using Repositories;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
+using ServiceContracts.Services;
 
 namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class GradesController : ControllerBase
+public class GradesController : CrudController<Grade>
 {
-    private readonly SchoolManagementDbContext _db;
-
-    public GradesController(SchoolManagementDbContext db)
+    public GradesController(IGradeService gradeService) : base(gradeService)
     {
-        _db = db;
     }
 }
