@@ -6,7 +6,7 @@ public class CrudService<T> where T : class
 {
     private readonly Repository<T> _entityRepository;
 
-    public CrudService(Repository<T> entityRepository)
+    protected CrudService(Repository<T> entityRepository)
     {
         _entityRepository = entityRepository;
     }
