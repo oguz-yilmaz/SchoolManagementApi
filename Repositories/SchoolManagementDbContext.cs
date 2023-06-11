@@ -144,6 +144,7 @@ public class SchoolManagementDbContext : DbContext
             }
         );
 
+        modelBuilder.Entity<Student>().HasIndex(s => s.Email).IsUnique();
 
         modelBuilder.Entity<Teacher>()
             .HasMany(teacher => teacher.Courses)
