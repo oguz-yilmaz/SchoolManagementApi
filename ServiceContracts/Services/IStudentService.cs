@@ -2,17 +2,9 @@ using Entities;
 
 namespace ServiceContracts.Services;
 
-public interface IStudentService
+public interface IStudentService : ICrudService<Student>
 {
-    Task<bool> StudentExistsAsync(int id);
+    Task<List<Student>> GetStudentsByCourseIdAsync(int courseId);
 
-    Task<List<Student>> GetAllStudentsAsync();
-
-    Task<Student> GetStudent(int id);
-
-    Task<Student> AddStudentAsync(Student student);
-
-    Task<Student> UpdateStudentAsync(Student student);
-
-    Task<Student> DeleteStudentAsync(int id);
+    Task<List<Student>> GetStudentsByCourseNameAsync(string courseName);
 }
