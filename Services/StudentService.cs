@@ -1,21 +1,31 @@
 using Entities;
-using ServiceContracts.Repositories;
+using Repositories;
 using ServiceContracts.Services;
 
 namespace Services;
 
-public class StudentService: IStudentService
+public class StudentService : IStudentService
 {
-    private readonly IGenericRepository<Student> _studentRepository;
-    
-    public StudentService(IGenericRepository<Student> studentRepository)
+    private readonly Repository<Student> _studentRepository;
+
+    public StudentService(Repository<Student> studentRepository)
     {
         _studentRepository = studentRepository;
     }
-    
-    public Task<List<Student>> GetAllStudentsAsync()
+
+    public async Task<bool> StudentExistsAsync(int id)
+    {
+        return await _studentRepository.GetByIdAsync(id) != null;
+    }
+
+    public Task<Student> GetStudent(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<List<Student>> GetAllStudentsAsync()
+    {
+        return await _studentRepository.GetAllAsync();
     }
 
     public async Task<Student> GetStudentByIdAsync(int id)

@@ -1,16 +1,23 @@
-using Repositories;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
+using ServiceContracts.Services;
 
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class StudentsController : ControllerBase
 {
-    private readonly SchoolManagementDbContext _db;
+    private readonly IStudentService _studentService;
 
-    public StudentsController(SchoolManagementDbContext db)
+    public StudentsController(IStudentService service)
     {
-        _db = db;
+        _studentService = service;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<Student>>> GetAllStudentsAsync()
+    {
+        return await _studentService.GetAllStudentsAsync();
     }
 }
