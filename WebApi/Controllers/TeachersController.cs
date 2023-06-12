@@ -5,10 +5,19 @@ using ServiceContracts.Services;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TeachersController : CrudController<Teacher>
 {
-    public TeachersController(ITeacherService teacherService) : base(teacherService)
+    private readonly ITeacherService teacherService;
+
+    public TeachersController(ITeacherService service) : base(service)
     {
+        teacherService = service;
+    }
+
+    [HttpGet("{id:int}/courses")]
+    public async Task<ActionResult<List<Course>>> CoursesAsync(int id)
+    {
+        return await teacherService.GetCoursesByTeacherIdAsync(id);
     }
 }

@@ -12,9 +12,7 @@ public class Course
 
     public ICollection<Teacher> Teachers { get; set; }
 
-    // A course can have multiple students
     public ICollection<Student> Students { get; set; }
 
-    // If you're grading exams, a course may have multiple associated exams
     public ICollection<Exam> Exams { get; set; }
 }

@@ -6,8 +6,21 @@ namespace Services;
 
 public class TeacherService : CrudService<Teacher>, ITeacherService
 {
-    public TeacherService(Repository<Teacher> teacherRepository) : base(teacherRepository)
+    private readonly TeacherRepository teacherRepository;
+
+    public TeacherService(TeacherRepository repo) : base(repo)
     {
+        teacherRepository = repo;
+    }
+
+    public Task<List<Teacher>> GetTeachersByCourseIdAsync(int courseId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<List<Course>> GetCoursesByTeacherIdAsync(int teacherId)
+    {
+        return await teacherRepository.GetCoursesByTeacherIdAsync(teacherId);
     }
 
     public Task<List<Teacher>> AddTeacherToCourseAsync(int teacherId, int courseId)

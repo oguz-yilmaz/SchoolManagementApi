@@ -53,7 +53,6 @@ public class CrudController<TEntity> : ControllerBase where TEntity : class
         return entity;
     }
 
-
     [HttpPut("{id:int}")]
     public async Task<ActionResult<TEntity>> UpdateAsync(int id, [FromBody] TEntity entity)
     {

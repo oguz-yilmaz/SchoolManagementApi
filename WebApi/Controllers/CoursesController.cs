@@ -5,7 +5,7 @@ using ServiceContracts.Services;
 namespace WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CoursesController : CrudController<Course>
 {
     public CoursesController(ICourseService courseService) : base(courseService)

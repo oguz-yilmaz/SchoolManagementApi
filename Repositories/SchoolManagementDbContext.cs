@@ -7,6 +7,7 @@ public class SchoolManagementDbContext : DbContext
 {
     public DbSet<Student> Students { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
+    public DbSet<Exam> Course { get; set; }
     public DbSet<Exam> Exams { get; set; }
     public DbSet<Grade> Grades { get; set; }
 
@@ -39,24 +40,8 @@ public class SchoolManagementDbContext : DbContext
         );
         modelBuilder.Entity<Student>().HasIndex(student => student.StudentNumber).IsUnique();
 
-        // seed Teachers table
-        modelBuilder.Entity<Teacher>().HasData(
-            new Teacher
-            {
-                TeacherId = 1, FirstName = "John", LastName = "Smith", Email = "smith@edu.com"
-            },
-            new Teacher
-            {
-                TeacherId = 2, FirstName = "Jane", LastName = "Smith", Email = "smith@edu.com"
-            },
-            new Teacher
-            {
-                TeacherId = 3, FirstName = "Jack", LastName = "Smith", Email = "smith@edu.com"
-            }
-        );
-
-        // seed Courses table
-        modelBuilder.Entity<Course>().HasData(
+        var courses = new[]
+        {
             new Course
             {
                 CourseId = 1, Name = "Mathematics", Description = "Mathematics course"
@@ -69,10 +54,26 @@ public class SchoolManagementDbContext : DbContext
             {
                 CourseId = 3, Name = "Chemistry", Description = "Chemistry course"
             }
-        );
+        };
 
-        // seed Exams table
-        modelBuilder.Entity<Exam>().HasData(
+        var teachers = new[]
+        {
+            new Teacher
+            {
+                TeacherId = 1, FirstName = "John", LastName = "Smith", Email = "smith@edu.com"
+            },
+            new Teacher
+            {
+                TeacherId = 2, FirstName = "Jane", LastName = "Smith", Email = "smith@edu.com"
+            },
+            new Teacher
+            {
+                TeacherId = 3, FirstName = "Jack", LastName = "Smith", Email = "smith@edu.com"
+            }
+        };
+
+        var exams = new[]
+        {
             new Exam
             {
                 ExamId = 1, Title = "Mathematics Exam 1",
@@ -98,10 +99,10 @@ public class SchoolManagementDbContext : DbContext
                 ExamId = 5, Title = "Chemistry Exam 1", CourseId = 3,
                 ExamDate = new DateTime(2023, 7, 9)
             }
-        );
+        };
 
-        // seed Grades table
-        modelBuilder.Entity<Grade>().HasData(
+        var grades = new[]
+        {
             new Grade
             {
                 GradeId = 1, StudentId = 1, ExamId = 1, Score = 50
@@ -142,6 +143,24 @@ public class SchoolManagementDbContext : DbContext
             {
                 GradeId = 10, StudentId = 2, ExamId = 5, Score = 10
             }
+        };
+
+        modelBuilder.Entity<Teacher>().HasData(teachers);
+        modelBuilder.Entity<Course>().HasData(courses);
+        modelBuilder.Entity<Exam>().HasData(exams);
+        modelBuilder.Entity<Grade>().HasData(grades);
+
+        modelBuilder.Entity<CourseTeacher>().HasKey(ct => new { ct.CourseId, ct.TeacherId });
+        modelBuilder.Entity<Teacher>()
+            .HasMany(t => t.Courses)
+            .WithMany(c => c.Teachers)
+            .UsingEntity<CourseTeacher>();
+
+        modelBuilder.Entity<CourseTeacher>().HasData(
+            new CourseTeacher { CourseId = 1, TeacherId = 1 },
+            new CourseTeacher { CourseId = 1, TeacherId = 2 },
+            new CourseTeacher { CourseId = 2, TeacherId = 2 },
+            new CourseTeacher { CourseId = 3, TeacherId = 3 }
         );
 
         modelBuilder.Entity<Student>().HasIndex(s => s.Email).IsUnique();
@@ -149,11 +168,5 @@ public class SchoolManagementDbContext : DbContext
         modelBuilder.Entity<Teacher>()
             .HasMany(teacher => teacher.Courses)
             .WithMany(course => course.Teachers);
-
-        modelBuilder.Entity<TeacherCourse>().HasKey(tc => new { tc.TeacherId, tc.CourseId });
-
-        modelBuilder.Entity<TeacherCourse>().HasData(
-            new TeacherCourse { TeacherId = 1, CourseId = 1 },
-            new TeacherCourse { TeacherId = 2, CourseId = 2 });
     }
 }

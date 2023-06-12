@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories;
 
@@ -10,9 +11,11 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(SchoolManagementDbContext))]
-    partial class SchoolManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612214826_RemovesTeacherCourseJoinEntity")]
+    partial class RemovesTeacherCourseJoinEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0-preview.4.23259.3");
@@ -30,6 +33,21 @@ namespace Repositories.Migrations
                     b.HasIndex("StudentsStudentId");
 
                     b.ToTable("CourseStudent");
+                });
+
+            modelBuilder.Entity("CourseTeacher", b =>
+                {
+                    b.Property<int>("CoursesCourseId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TeachersTeacherId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CoursesCourseId", "TeachersTeacherId");
+
+                    b.HasIndex("TeachersTeacherId");
+
+                    b.ToTable("CourseTeacher");
                 });
 
             modelBuilder.Entity("Entities.Course", b =>
@@ -69,43 +87,6 @@ namespace Repositories.Migrations
                             CourseId = 3,
                             Description = "Chemistry course",
                             Name = "Chemistry"
-                        });
-                });
-
-            modelBuilder.Entity("Entities.CourseTeacher", b =>
-                {
-                    b.Property<int>("CourseId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CourseId", "TeacherId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.ToTable("CourseTeacher");
-
-                    b.HasData(
-                        new
-                        {
-                            CourseId = 1,
-                            TeacherId = 1
-                        },
-                        new
-                        {
-                            CourseId = 1,
-                            TeacherId = 2
-                        },
-                        new
-                        {
-                            CourseId = 2,
-                            TeacherId = 2
-                        },
-                        new
-                        {
-                            CourseId = 3,
-                            TeacherId = 3
                         });
                 });
 
@@ -388,23 +369,19 @@ namespace Repositories.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Entities.CourseTeacher", b =>
+            modelBuilder.Entity("CourseTeacher", b =>
                 {
-                    b.HasOne("Entities.Course", "Course")
+                    b.HasOne("Entities.Course", null)
                         .WithMany()
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("CoursesCourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Teacher", "Teacher")
+                    b.HasOne("Entities.Teacher", null)
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("TeachersTeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("Entities.Exam", b =>
