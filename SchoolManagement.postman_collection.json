@@ -1,0 +1,703 @@
+{
+	"info": {
+		"_postman_id": "face4fa5-d709-4025-bd24-d18ee2961df4",
+		"name": "SchoolManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12094206"
+	},
+	"item": [
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "List all Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"StudentNumber\": 14567,\n    \"FirstName\": \"David\",\n    \"LastName\": \"Doe\",\n    \"Email\": \"david.doe@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"StudentNumber\": 9988,\n    \"FirstName\": \"Sam\",\n    \"LastName\": \"Doe\",\n    \"Email\": \"sam.doe@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all grades of Student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/students/1/grades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students",
+								"1",
+								"grades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all courses of Student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/students/1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"students",
+								"1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "List all Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/teachers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FirstName\": \"David\",\n    \"LastName\": \"Doe\",\n    \"Email\": \"david.doe@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/teachers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"FirstName\": \"Sam\",\n    \"LastName\": \"Doe\",\n    \"Email\": \"sam.doe@example.com\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/teachers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/teachers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teacher Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/teachers/1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"teachers",
+								"1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exams",
+			"item": [
+				{
+					"name": "List all Exams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/exams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/exams/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"exams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Exam",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Title\": \"Prog 2 exam\",\n    \"ExamDate\": \"2023-06-17\",\n    \"CourseId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/exams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"exams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exam",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Title\": \"Prog 2 exam\",\n    \"ExamDate\": \"2023-06-17\",\n    \"CourseId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/exams/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"exams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exam",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/exams/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"exams",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "List all Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Python\",\n    \"description\": \"Python course\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Python\",\n    \"description\": \"Python course\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grade",
+			"item": [
+				{
+					"name": "List all Grades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/grades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"grades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Grade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/grades/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"grades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Grade",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gradeId\": 1,\n    \"studentId\": 1,\n    \"examId\": 1,\n    \"score\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/grades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"grades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Grade",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gradeId\": 1,\n    \"studentId\": 1,\n    \"examId\": 1,\n    \"score\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5200/api/grades/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"grades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Grade",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5200/api/grades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5200",
+							"path": [
+								"api",
+								"grades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
