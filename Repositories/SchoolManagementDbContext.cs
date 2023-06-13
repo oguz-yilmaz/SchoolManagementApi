@@ -149,7 +149,10 @@ public class SchoolManagementDbContext : DbContext
         modelBuilder.Entity<Course>().HasData(courses);
         modelBuilder.Entity<Exam>().HasData(exams);
         modelBuilder.Entity<Grade>().HasData(grades);
+        
+        modelBuilder.Entity<Student>().HasIndex(s => s.Email).IsUnique();
 
+        // many-to-many relationship between Course and Teacher
         modelBuilder.Entity<CourseTeacher>().HasKey(ct => new { ct.CourseId, ct.TeacherId });
         modelBuilder.Entity<Teacher>()
             .HasMany(t => t.Courses)
@@ -163,6 +166,7 @@ public class SchoolManagementDbContext : DbContext
             new CourseTeacher { CourseId = 3, TeacherId = 3 }
         );
         
+        // many-to-many relationship between Course and Student
         modelBuilder.Entity<CourseStudent>().HasKey(ct => new { ct.CourseId, ct.StudentId });
         modelBuilder.Entity<Student>()
             .HasMany(s => s.Courses)
@@ -175,7 +179,5 @@ public class SchoolManagementDbContext : DbContext
             new CourseStudent { CourseId = 2, StudentId = 2 },
             new CourseStudent { CourseId = 3, StudentId = 3 }
         );
-
-        modelBuilder.Entity<Student>().HasIndex(s => s.Email).IsUnique();
     }
 }

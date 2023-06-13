@@ -18,7 +18,12 @@ public class StudentService : CrudService<Student>, IStudentService
         return await studentRepository.GetByCourseIdAsync(studentId);
     }
 
-    public Task<List<Student>> GetStudentsByCourseNameAsync(string courseName)
+    public async Task<List<Grade>?> GetAllGradesAsync(int studentId)
+    {
+        return await studentRepository.GetAllGradesAsync(studentId);
+    }
+    
+    public Task<List<Student>> GetAllGradesAsync(string courseName)
     {
         throw new NotImplementedException();
     }

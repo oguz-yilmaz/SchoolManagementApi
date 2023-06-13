@@ -20,4 +20,10 @@ public class StudentsController : CrudController<Student>
     {
         return await studentService.GetStudentCoursesByIdAsync(studentId);
     }
+    
+    [HttpGet("{studentId:int}/grades")]
+    public async Task<ActionResult<List<Grade>>> GradesAsync(int studentId)
+    {
+        return await studentService.GetAllGradesAsync(studentId);
+    }
 }

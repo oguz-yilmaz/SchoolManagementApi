@@ -20,4 +20,13 @@ public class StudentRepository : Repository<Student>
 
         return student?.Courses.ToList();
     }
+
+    public async Task<List<Grade>?> GetAllGradesAsync(int studentId)
+    {
+        var student = await _db.Students
+            .Include(s => s.Grades)
+            .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+        return student?.Grades.ToList();
+    }
 }
