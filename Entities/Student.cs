@@ -16,5 +16,5 @@ public class Student
 
     public ICollection<Course>? Courses { get; set; }
 
-    public ICollection<Grade> Grades { get; set; }
+    public ICollection<Grade>? Grades { get; set; }
 }

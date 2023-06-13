@@ -10,9 +10,9 @@ public class Course
 
     public string Description { get; set; }
 
-    public ICollection<Teacher> Teachers { get; set; }
+    public ICollection<Teacher>? Teachers { get; set; }
 
-    public ICollection<Student> Students { get; set; }
+    public ICollection<Student>? Students { get; set; }
 
-    public ICollection<Exam> Exams { get; set; }
+    public ICollection<Exam>? Exams { get; set; }
 }
