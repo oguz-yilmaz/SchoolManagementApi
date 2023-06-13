@@ -15,6 +15,7 @@ builder.Services.AddDbContext<SchoolManagementDbContext>(options =>
 });
 
 builder.Services.AddScoped<TeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<StudentRepository, StudentRepository>();
 
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
@@ -24,9 +25,7 @@ builder.Services.AddScoped<IExamService, ExamService>();
 
 builder.Services.AddScoped(typeof(Repository<>), typeof(Repository<>));
 
-
 var app = builder.Build();
-
 
 app.UseHttpsRedirection();
 

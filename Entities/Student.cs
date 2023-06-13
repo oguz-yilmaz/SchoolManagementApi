@@ -14,9 +14,7 @@ public class Student
 
     public string Email { get; set; }
 
-    // Assuming a student can be enrolled in multiple courses
     public ICollection<Course>? Courses { get; set; }
 
-    // If you are grading exams, you may want to keep a list of exam grades for each student
-    // public ICollection<ExamGrade> ExamGrades { get; set; }
+    public ICollection<Grade> Grades { get; set; }
 }

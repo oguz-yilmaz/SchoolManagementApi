@@ -6,13 +6,16 @@ namespace Services;
 
 public class StudentService : CrudService<Student>, IStudentService
 {
-    public StudentService(Repository<Student> studentRepository) : base(studentRepository)
+    private readonly StudentRepository studentRepository;
+
+    public StudentService(StudentRepository repo) : base(repo)
     {
+        studentRepository = repo;
     }
 
-    public Task<List<Student>> GetStudentsByCourseIdAsync(int courseId)
+    public async Task<List<Course>?> GetStudentCoursesByIdAsync(int studentId)
     {
-        throw new NotImplementedException();
+        return await studentRepository.GetByCourseIdAsync(studentId);
     }
 
     public Task<List<Student>> GetStudentsByCourseNameAsync(string courseName)

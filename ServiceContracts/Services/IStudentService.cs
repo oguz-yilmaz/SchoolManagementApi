@@ -4,7 +4,7 @@ namespace ServiceContracts.Services;
 
 public interface IStudentService : ICrudService<Student>
 {
-    Task<List<Student>> GetStudentsByCourseIdAsync(int courseId);
+    Task<List<Course>> GetStudentCoursesByIdAsync(int studentId);
 
     Task<List<Student>> GetStudentsByCourseNameAsync(string courseName);
 }
