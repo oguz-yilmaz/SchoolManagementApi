@@ -162,11 +162,20 @@ public class SchoolManagementDbContext : DbContext
             new CourseTeacher { CourseId = 2, TeacherId = 2 },
             new CourseTeacher { CourseId = 3, TeacherId = 3 }
         );
+        
+        modelBuilder.Entity<CourseStudent>().HasKey(ct => new { ct.CourseId, ct.StudentId });
+        modelBuilder.Entity<Student>()
+            .HasMany(s => s.Courses)
+            .WithMany(c => c.Students)
+            .UsingEntity<CourseStudent>();
+
+        modelBuilder.Entity<CourseStudent>().HasData(
+            new CourseStudent { CourseId = 1, StudentId = 1 },
+            new CourseStudent { CourseId = 1, StudentId = 2 },
+            new CourseStudent { CourseId = 2, StudentId = 2 },
+            new CourseStudent { CourseId = 3, StudentId = 3 }
+        );
 
         modelBuilder.Entity<Student>().HasIndex(s => s.Email).IsUnique();
-
-        modelBuilder.Entity<Teacher>()
-            .HasMany(teacher => teacher.Courses)
-            .WithMany(course => course.Teachers);
     }
 }
