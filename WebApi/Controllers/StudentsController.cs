@@ -9,13 +9,13 @@ namespace WebApi.Controllers;
 public class StudentsController : CrudController<Student>
 {
     private readonly IStudentService studentService;
-    
+
     public StudentsController(IStudentService service) : base(service)
     {
         studentService = service;
     }
-    
-    [HttpGet("{id:int}/courses")]
+
+    [HttpGet("{studentId:int}/courses")]
     public async Task<ActionResult<List<Course>>> CoursesAsync(int studentId)
     {
         return await studentService.GetStudentCoursesByIdAsync(studentId);
